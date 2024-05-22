@@ -30,14 +30,7 @@ const connection = async () => {
     console.log("Error: ", err);
   }
 };
-app.use(express.json());
-app.use(cors(corsOptions));
 
-app.use("/api/v1", router);
-app.use("/api/v1/verify", jwtRoute);
-app.use("/api/v1/users", userRoute);
-app.use("/api/v1/courses", courseRoute);
-app.use("/api/v1/payment", paymentRoute);
 
 app.listen(port, () => {
   connection();
