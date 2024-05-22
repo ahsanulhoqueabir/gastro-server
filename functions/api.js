@@ -8,6 +8,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const userRoute = require("../route/user.js");
 const courseRoute = require("../route/course.js");
+const jwtRoute = require("../route/middleware.js");
+const paymentRoute = require("../route/payment.js");
 
 const app = express();
 const corsOptions = { origin: true, Credential: true };
@@ -38,8 +40,13 @@ router.post("/jwt", (req, res) => {
   });
   res.send({ token });
 });
+// app.use("/.netlify/functions/api/v1", router);
+// app.use("/.netlify/functions/api/v1/users", userRoute);
+// app.use("/.netlify/functions/api/v1/courses", courseRoute);
 app.use("/.netlify/functions/api/v1", router);
+app.use("/.netlify/functions/api/v1/verify", jwtRoute);
 app.use("/.netlify/functions/api/v1/users", userRoute);
 app.use("/.netlify/functions/api/v1/courses", courseRoute);
+app.use("/.netlify/functions/api/v1/payment", paymentRoute);
 
 module.exports.handler = serverless(app);
