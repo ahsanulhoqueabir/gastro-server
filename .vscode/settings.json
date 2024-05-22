@@ -1,0 +1,9 @@
+{
+    "workbench.colorCustomizations": {
+  "titleBar.activeBackground": "#282C34", // Active window background color
+  "titleBar.activeForeground": "#FFFFFF", // Active window text color
+  "titleBar.inactiveBackground": "#3C4048", // Inactive window background color
+  "titleBar.inactiveForeground": "#CCCCCC" // Inactive window text color
+}
+
+}
