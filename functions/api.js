@@ -10,6 +10,8 @@ const userRoute = require("../route/user.js");
 const courseRoute = require("../route/course.js");
 const jwtRoute = require("../route/middleware.js");
 const paymentRoute = require("../route/payment.js");
+const feedback = require("../route/feedback.js");
+const reviewsRoute = require("../route/reviews.js");
 
 const app = express();
 const corsOptions = { origin: true, Credential: true };
@@ -40,13 +42,12 @@ router.post("/jwt", (req, res) => {
   });
   res.send({ token });
 });
-// app.use("/.netlify/functions/api/v1", router);
-// app.use("/.netlify/functions/api/v1/users", userRoute);
-// app.use("/.netlify/functions/api/v1/courses", courseRoute);
 app.use("/.netlify/functions/api/v1", router);
 app.use("/.netlify/functions/api/v1/verify", jwtRoute);
 app.use("/.netlify/functions/api/v1/users", userRoute);
 app.use("/.netlify/functions/api/v1/courses", courseRoute);
 app.use("/.netlify/functions/api/v1/payment", paymentRoute);
+app.use("/.netlify/functions/api/v1/feedback", feedback);
+app.use("/.netlify/functions/api/v1/reviews", reviewsRoute);
 
 module.exports.handler = serverless(app);
