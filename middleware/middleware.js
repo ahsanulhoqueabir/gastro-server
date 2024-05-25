@@ -37,9 +37,20 @@ const verifyAdmin = async (req, res, next) => {
     res.status(403).json({ error: true, message: "Unauthorized" });
   }
 };
+const verifyAdInst = async (req, res, next) => {
+  const email = req.decoded.email;
+  const user = await users.findOne({ email: email });
+
+  if (user.role === "admin" || user.role === "instructor") {
+    next();
+  } else {
+    res.status(403).json({ error: true, message: "Unauthorized" });
+  }
+};
 
 module.exports = {
   verifyJWT,
   verifyAdmin,
   verifyInstructor,
+  verifyAdInst,
 };

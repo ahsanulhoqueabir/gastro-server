@@ -42,7 +42,7 @@ const courseSchema = new mongoose.Schema(
       enum: ["pending", "approved", "denied"],
       default: "pending",
     },
-    feedBack: {
+    feedback: {
       type: String,
     },
     totalSeats: {

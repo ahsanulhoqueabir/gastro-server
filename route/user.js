@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.post("/create", createUser);
 router.get("/alluser", getUsers);
-router.get("/query", verifyJWT, queryUser); // add verifyJWT
+router.get("/query", queryUser); // add verifyJWT
 router.put("/add", addUser);
 router.delete("/delete/:id", deleteUser);
 router.put("/update", verifyJWT, updateUser);
