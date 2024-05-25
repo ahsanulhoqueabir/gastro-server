@@ -18,12 +18,12 @@ const router = express.Router();
 
 router.post("/create", createUser);
 router.get("/alluser", getUsers);
-router.get("/query", queryUser); // add verifyJWT
+router.get("/query", verifyJWT, queryUser); // add verifyJWT
 router.put("/add", addUser);
 router.delete("/delete/:id", deleteUser);
 router.put("/update", verifyJWT, updateUser);
 router.get("/instructor", getInstructor);
-router.put("/updaterole", updateRole);
-router.put("/addSelectedClass", addSelectedClass); // add verifyJWT
-router.delete("/RemoveClass", removeSelectedClass); // add verifyJWT
+router.put("/updaterole", verifyJWT, verifyAdmin, updateRole);
+router.put("/addSelectedClass", verifyJWT, addSelectedClass); // add verifyJWT
+router.delete("/RemoveClass", verifyJWT, removeSelectedClass); // add verifyJWT
 module.exports = router;

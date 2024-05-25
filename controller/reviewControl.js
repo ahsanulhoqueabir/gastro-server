@@ -21,7 +21,6 @@ const getReviews = async (req, res) => {
         }
       )
       .sort({
-        createdAt: -1,
         rating: -1,
       })
       .populate("user", {
